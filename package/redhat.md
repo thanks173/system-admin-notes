@@ -6,6 +6,15 @@
 rpm --import public.gpg
 ```
 
+## Build rpm file
+
+```bash
+```
+# With debug package
+rpmbuild -ba SPECS/<package-name>.spec
+# Without debug package
+rpmbuild --define "debug_package %{nil}" -ba SPECS/<package-name>.spec
+
 ## Sign package
 
 ```bash
