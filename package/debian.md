@@ -6,6 +6,12 @@
 apt-key add <key_file>
 ```
 
+## Build deb file
+```bash
+dpkg-deb --build <package-name>/
+```
+
+
 ## Sign .deb package
 
 ```bash
