@@ -1,0 +1,13 @@
+[Unit]
+Description=SSH Tunnel
+After=network.target
+Wants=network-online.target
+
+[Service]
+User=root
+Restart=always
+RestartSec=20
+ExecStart=/usr/bin/ssh -N -R 2222:127.0.0.1:22 -i ~/.ssh/<key-file> -N <account>@server
+[Install]
+WantedBy=multi-user.target
+
