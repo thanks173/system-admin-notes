@@ -64,6 +64,8 @@ case "$1" in
     if [[ $n == 0 ]]; then
     	# the rule was not found, add it
     	iptables -A PREROUTING -t nat -d $VIP -p tcp -j REDIRECT
+	# rule for UDP connection
+    	iptables -A PREROUTING -t nat -d $VIP -p udp -j REDIRECT
     fi
     ;;
   del)
@@ -72,6 +74,8 @@ case "$1" in
     while [[ $n > 0 ]]; do
     	# remove the rule
     	iptables -D PREROUTING -t nat -d $VIP -p tcp -j REDIRECT
+	# rule for UDP connection
+    	iptables -D PREROUTING -t nat -d $VIP -p udp -j REDIRECT
     	n=$(($n-1))
     done
     ;;
