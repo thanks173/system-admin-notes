@@ -34,6 +34,7 @@ service iptables save
 * Add these lines to `keepalived.service` to bring up the UDP ports when keepalived launches and to clean up after it stops.
 
 ```
+## Directives with "=-" are allowed to fail without consequence
 ExecStartPre=-/sbin/ipvsadm -A -u <virtual-ip-address>:53 -s rr
 ExecStartPre=-/sbin/ipvsadm -a -u <virtual-ip-address>:53 -r <real-server-ip-1>:53 -g
 ExecStartPre=-/sbin/ipvsadm -a -u <virtual-ip-address>:53 -r <real-server-ip-2>:53 -g
