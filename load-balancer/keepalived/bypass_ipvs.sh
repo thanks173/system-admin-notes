@@ -60,21 +60,21 @@ VIP="${VIP[0]}.${VIP[1]}.${VIP[2]}.${VIP[3]}"
 case "$1" in
   add)
   	# check if the rule was already specified
-  	n=$(iptables -t nat -L| grep $VIP | wc -l)
+  	n=$(iptables -t nat -n -L| grep $VIP | wc -l)
     if [[ $n == 0 ]]; then
     	# the rule was not found, add it
     	iptables -A PREROUTING -t nat -d $VIP -p tcp -j REDIRECT
-	# rule for UDP connection
+	    # rule for UDP connection
     	iptables -A PREROUTING -t nat -d $VIP -p udp -j REDIRECT
     fi
     ;;
   del)
   	# check if the rule was already specified
-    n=$(iptables -t nat -L| grep $VIP | wc -l)
+    n=$(iptables -t nat -n -L| grep $VIP | wc -l)
     while [[ $n > 0 ]]; do
     	# remove the rule
     	iptables -D PREROUTING -t nat -d $VIP -p tcp -j REDIRECT
-	# rule for UDP connection
+	    # rule for UDP connection
     	iptables -D PREROUTING -t nat -d $VIP -p udp -j REDIRECT
     	n=$(($n-1))
     done
