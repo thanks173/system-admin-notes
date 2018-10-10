@@ -45,6 +45,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'majutsushi/tagbar'
 Plug 'benmills/vimux'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Programming Support
 Plug 'valloric/youcompleteme'  " Need manual installation
 Plug 'raimondi/delimitmate'
