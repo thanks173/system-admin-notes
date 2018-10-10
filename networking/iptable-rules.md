@@ -2,6 +2,10 @@
 
 ## Traversing of tables and chains
 
+When a packet first enters the firewall, it hits the hardware and then gets passed on to the proper device driver in the kernel. Then the packet starts to go through a series of steps in the kernel, before it is either sent to the correct application (locally), or forwarded to another host, or whatever happens to it.
+
+The packet can be stopped at any of the iptables chains, or anywhere else if it is malformed. However, we are mainly interested in the iptables aspect of this lot.
+
 ```ascii
                       NETWORK
                          +
