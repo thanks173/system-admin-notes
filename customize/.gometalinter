@@ -1,3 +1,0 @@
-{
-  "Exclude": ["exported type (\\w+) should have comment or be unexported"]
-}
